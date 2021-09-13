@@ -1,3 +1,14 @@
+<?php
+require_once "php/connect.php";
+$link = mysqli_connect($host, $user, $pass, "architect");
+
+$log = mysqli_query( $link,"SELECT * FROM `password` WHERE `psw`='".mysqli_real_escape_string($link,$_POST['password'])."' ");
+$ps = mysqli_fetch_assoc($log);
+if($ps['psw'] === ($_POST['password'])){
+    header("Location: php/dash_board.php"); exit();
+}
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,12 +21,15 @@
 <body>
     <div class="container">
         <div class = "row">
+        
             <div  class="col-xl-7 col-lg-7 col-md-12 col-sm-12" style="padding-top:100px ; padding-left:500px ;">
-                <label for="inputPassword4" class="form-label">Пароль</label>
-                <input type="password" class="form-control" id="inputPassword4">
-                <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" style="padding-top:20px ; padding-left:180px;">
-                    <button type="button" class="btn btn-primary">Primary</button>
-                </div>
+                <form method = "post">
+                    <label for="inputPassword4" class="form-label">Пароль</label>
+                     <input type="password" name="password" class="form-control" id="inputPassword4">
+                     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" style="padding-top:20px ; padding-left:180px;">
+                        <button type="button" name ="enter" class="btn btn-primary">Primary</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
