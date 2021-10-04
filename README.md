@@ -1,2 +1,1 @@
-# Bogdan Puzikov prjct
-
+Hello. This is my first repository after a loooong pause. So, It's my homework. I needed to make a monolithic application with enterace by login and filling out the form(all information goes to database).
